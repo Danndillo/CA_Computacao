@@ -1,0 +1,160 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ------------------------------------------------------------------
+   Tokens. Laranja / preto / grafite / areia vêm da paleta do CA.
+   Superfícies e linhas são derivadas, com leve viés quente.
+   ------------------------------------------------------------------ */
+:root {
+  --bg: #faf7f2;
+  --surface: #ffffff;
+  --surface-2: #f3ede4;
+  --sand: #e8ddd0;
+  --line: #d6c8b8;
+  --fg: #1e1814;
+  --fg-muted: #5b5048;
+  --ink: #020101;
+  --accent-text: #a83a00;
+  --focus: #b8420c;
+  --chip-on-bg: #020101;
+  --chip-on-fg: #ffffff;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --bg: #0f0c0a;
+    --surface: #1a1410;
+    --surface-2: #231b16;
+    --sand: #2b221c;
+    --line: #3e332b;
+    --fg: #f1eae2;
+    --fg-muted: #b7aba0;
+    --ink: #ffffff;
+    --accent-text: #ff8a47;
+    --focus: #ff8a47;
+    --chip-on-bg: #f26f20;
+    --chip-on-fg: #020101;
+    color-scheme: dark;
+  }
+}
+:root[data-theme='dark'] {
+  --bg: #0f0c0a;
+  --surface: #1a1410;
+  --surface-2: #231b16;
+  --sand: #2b221c;
+  --line: #3e332b;
+  --fg: #f1eae2;
+  --fg-muted: #b7aba0;
+  --ink: #ffffff;
+  --accent-text: #ff8a47;
+  --focus: #ff8a47;
+  --chip-on-bg: #f26f20;
+  --chip-on-fg: #020101;
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'Instrument Sans', system-ui, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+/* Faixa sob a barra de status do celular, na cor do cabeçalho */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px);
+  z-index: 60;
+  background: #020101;
+}
+
+h1, h2, h3, h4 {
+  font-family: Archivo, 'Arial Narrow', Arial, sans-serif;
+  color: var(--ink);
+  text-wrap: balance;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+}
+p { text-wrap: pretty; }
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+.on-dark :focus-visible,
+.on-dark:focus-visible {
+  outline-color: #ff8a47;
+}
+
+@layer components {
+  .wrap {
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+  .eyebrow {
+    font-family: 'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .display {
+    font-family: Archivo, 'Arial Narrow', Arial, sans-serif;
+    font-stretch: 118%;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+  .tape {
+    height: 10px;
+    background-image: radial-gradient(circle at 5px 5px, currentColor 2.3px, transparent 2.8px);
+    background-size: 16px 10px;
+    background-repeat: repeat-x;
+  }
+  .link-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 600;
+    color: var(--accent-text);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+  }
+  .link-arrow:hover { text-decoration-color: currentColor; }
+  .link-arrow svg { transition: transform 0.2s ease; }
+  .link-arrow:hover svg { transform: translateX(3px); }
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes drift {
+  from { background-position-x: 0; }
+  to { background-position-x: -160px; }
+}
+.rise { animation: rise 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+.drift { animation: drift 24s linear infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Alvos de foco programático (título e conteúdo) não precisam de anel visível */
+[tabindex='-1']:focus-visible { outline: none; }
