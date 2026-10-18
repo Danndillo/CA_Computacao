@@ -1,8 +1,6 @@
 import { absoluteLink, newsHref } from '../lib/route'
 import type { DocItem, EventItem, Member, NewsPost, Project } from '../types'
-import { Cover } from './Cover'
 import { Icon } from './Icon'
-import { OwlMark } from './Logo'
 import { ButtonLink, CopyButton, DemoTag, Placeholder } from './ui'
 
 /* ---------- Notícia ---------- */
@@ -12,11 +10,7 @@ export function NewsCard({ post }: { post: NewsPost }) {
     <article
       className={`group relative flex min-w-0 flex-col overflow-hidden rounded-lg border ${dark ? 'on-dark border-night bg-night text-white' : 'border-line bg-surface'}`}
     >
-      {post.cover ? (
-        <img src={post.cover.src} alt={post.cover.alt} loading="lazy" className="aspect-[16/9] w-full object-cover" />
-      ) : (
-        <Cover category={post.category} className="aspect-[16/9] w-full" />
-      )}
+      {post.cover && <img src={post.cover.src} alt={post.cover.alt} loading="lazy" className="aspect-[16/9] w-full object-cover" />}
       <div className="flex flex-1 flex-col gap-3 p-5">
         <div className="flex flex-wrap items-center gap-2">
           {post.urgent && (
@@ -96,10 +90,10 @@ export function MemberCard({ member }: { member: Member }) {
   return (
     <article className="flex min-w-0 flex-col items-center rounded-lg border border-line bg-surface p-6 text-center">
       {member.photo ? (
-        <img src={member.photo.src} alt={member.photo.alt} loading="lazy" className="h-28 w-28 rounded-full border-4 border-orange object-cover" />
+        <img src={member.photo.src} alt={member.photo.alt} loading="lazy" className="h-28 w-28 rounded-full object-cover" />
       ) : (
-        <div className="on-dark grid h-28 w-28 place-items-center rounded-full border-4 border-orange bg-night" role="img" aria-label="Foto ainda não disponível">
-          <OwlMark className="h-10 w-auto opacity-90" />
+        <div className="grid h-28 w-28 place-items-center rounded-full bg-sand text-muted" role="img" aria-label="Foto ainda não disponível">
+          <Icon name="user" size={44} />
         </div>
       )}
       <h3 className="display mt-4 text-lg">{member.placeholder ? <Placeholder>{member.name}</Placeholder> : member.name}</h3>

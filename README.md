@@ -27,7 +27,7 @@ Tudo fica em `src/content/`. Enquanto uma lista estiver vazia, o site mostra mod
 
 ## Pendências conhecidas
 
-- **Logotipo:** a coruja em `src/components/Logo.tsx` é uma marca provisória, porque o arquivo oficial não foi enviado. Troque o conteúdo de `<OwlMark />` pelo SVG ou imagem oficial.
+- **Logotipo:** o monograma "CA" em `src/components/Logo.tsx` é provisório. Troque por uma `<img>` com o logotipo oficial.
 - **Formulário de contato:** valida os campos, mas só envia de verdade se existir um endpoint. Defina `VITE_CONTACT_ENDPOINT` (ex.: Formspree) no build. Sem isso, a página avisa que nada foi enviado e oferece copiar a mensagem.
 - **CMS / área administrativa:** não existe. `src/services/content.ts` é o ponto de troca: substitua pelas chamadas ao CMS ou banco escolhido (Supabase, Sanity, Strapi...). Edição online precisa da autenticação e das permissões desse serviço.
 - **Atividades complementares:** o relatório é de 2020 e corta alguns enunciados no fim da linha (marcados com "…"). Confirme texto e valores com o Colegiado.

@@ -19,7 +19,7 @@ export function Documentos() {
   return (
     <>
       <PageHeader eyebrow="Transparência" title="Documentos" lead="Estatuto, atas, editais, relatórios e outros arquivos da gestão. Só aparece aqui o que foi publicado de verdade." />
-      <div className="wrap py-12 md:py-16">
+      <div className="wrap py-[clamp(2rem,6vw,4rem)]">
         <div className="grid gap-5">
           <div className="relative max-w-md">
             <label htmlFor="busca-doc" className="eyebrow mb-2 block text-muted">Buscar documento</label>

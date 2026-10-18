@@ -1,6 +1,5 @@
 import { useMemo, useState } from 'react'
 import { NewsCard } from '../components/cards'
-import { Cover } from '../components/Cover'
 import { CopyButton, Chips, DemoNotice, EmptyState, PageHeader, ArrowLink } from '../components/ui'
 import { newsCategories } from '../content/news'
 import { absoluteLink, newsHref } from '../lib/route'
@@ -19,7 +18,7 @@ export function Noticias() {
   return (
     <>
       <PageHeader eyebrow="Comunicados" title="Notícias e comunicados" lead="Informações para os estudantes do curso, organizadas por assunto." />
-      <div className="wrap py-12 md:py-16">
+      <div className="wrap py-[clamp(2rem,6vw,4rem)]">
         {isDemo && (
           <div className="mb-8">
             <DemoNotice>Ainda não há publicações oficiais. Estes cartões são modelos para mostrar o layout e os filtros.</DemoNotice>
@@ -33,9 +32,9 @@ export function Noticias() {
         />
         <p className="sr-only" role="status" aria-live="polite">{shown.length} {shown.length === 1 ? 'publicação' : 'publicações'}</p>
 
-        <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid grid-cols-[repeat(auto-fill,minmax(min(100%,19rem),1fr))] gap-5">
           {[...urgent, ...rest].map((p) => (
-            <div key={p.id} className={p.urgent ? 'md:col-span-2 lg:col-span-3' : ''}>
+            <div key={p.id} className={p.urgent ? 'col-[1/-1]' : ''}>
               <NewsCard post={p} />
             </div>
           ))}
@@ -60,13 +59,9 @@ export function Noticia({ id }: { id: string }) {
   return (
     <>
       <PageHeader eyebrow={`${post.category} · ${post.dateLabel}`} title={post.title} lead={post.summary} />
-      <article className="wrap py-12 md:py-16">
+      <article className="wrap py-[clamp(2rem,6vw,4rem)]">
         <div className="mx-auto max-w-3xl">
-          {post.cover ? (
-            <img src={post.cover.src} alt={post.cover.alt} className="aspect-[16/9] w-full rounded-lg object-cover" />
-          ) : (
-            <Cover category={post.category} className="aspect-[16/9] w-full rounded-lg" />
-          )}
+          {post.cover && <img src={post.cover.src} alt={post.cover.alt} className="aspect-[16/9] w-full rounded-lg object-cover" />}
           {post.demo && (
             <div className="mt-6"><DemoNotice>Publicação de modelo, sem informação oficial.</DemoNotice></div>
           )}

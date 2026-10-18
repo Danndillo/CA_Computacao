@@ -1,16 +1,14 @@
 import { nav, placeholders, site } from '../content/site'
-import { OwlMark, Wordmark } from './Logo'
+import { Monogram, Wordmark } from './Logo'
 import { Placeholder } from './ui'
-import { Tape } from './Tape'
 
 export function Footer() {
   return (
-    <footer className="on-dark bg-night text-white">
-      <Tape className="text-graphite" />
-      <div className="wrap grid gap-10 py-14 md:grid-cols-[1.3fr_1fr_1fr]">
+    <footer className="on-dark border-t-4 border-orange bg-night text-white">
+      <div className="wrap grid gap-10 py-[clamp(2.5rem,6vw,3.5rem)] md:grid-cols-[1.3fr_1fr_1fr]">
         <div className="min-w-0">
           <a href="#inicio" className="inline-flex items-center gap-3" aria-label="Voltar ao início">
-            <OwlMark className="h-10 w-auto" />
+            <Monogram className="h-10 w-10 text-xl" />
             <Wordmark />
           </a>
           <p className="mt-5 max-w-[40ch] text-sm text-white/70">

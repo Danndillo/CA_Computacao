@@ -3,7 +3,7 @@ import { nav } from '../content/site'
 import type { PageName, Route } from '../lib/route'
 import { useTheme } from '../lib/useTheme'
 import { Icon } from './Icon'
-import { OwlMark, Wordmark } from './Logo'
+import { Monogram, Wordmark } from './Logo'
 
 const activeFor = (page: PageName): PageName => (page === 'noticia' ? 'noticias' : page)
 
@@ -31,7 +31,7 @@ export function Header({ route }: { route: Route }) {
     <header className="on-dark sticky top-[env(safe-area-inset-top,0px)] z-50 border-b border-graphite bg-night text-white">
       <div className="wrap flex h-16 items-center justify-between gap-4">
         <a href="#inicio" className="flex min-w-0 items-center gap-3" aria-label="CA Computação UFES Alegre, página inicial">
-          <OwlMark className="h-8 w-auto shrink-0" />
+          <Monogram className="h-9 w-9 text-lg" />
           <Wordmark />
         </a>
 

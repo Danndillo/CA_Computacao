@@ -5,7 +5,7 @@ export function Sobre() {
   return (
     <>
       <PageHeader eyebrow="Institucional" title="Sobre o Centro Acadêmico" lead={aboutIntro} />
-      <div className="wrap py-14 md:py-20">
+      <div className="wrap py-[clamp(2.5rem,7vw,5rem)]">
         <div className="grid gap-x-12 gap-y-10 lg:grid-cols-[14rem_1fr]">
           <nav aria-label="Nesta página" className="hidden lg:block">
             <ul className="sticky top-24 space-y-2 border-l-2 border-line pl-4 text-sm">

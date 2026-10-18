@@ -26,7 +26,7 @@ const order: (keyof ContactPayload)[] = ['name', 'email', 'subject', 'message']
 
 function Field({ id, label, error, hint, children }: { id: string; label: string; error?: string; hint?: string; children: React.ReactNode }) {
   return (
-    <div>
+    <div className="min-w-0">
       <label htmlFor={id} className="mb-1.5 block text-sm font-semibold text-ink">
         {label} <span className="font-normal text-muted">(obrigatório)</span>
       </label>
@@ -98,7 +98,7 @@ export function Contato() {
   return (
     <>
       <PageHeader eyebrow="Fale com a gestão" title="Contato e participação" lead="Dúvidas, sugestões e solicitações dos estudantes chegam à gestão por aqui. Também mostramos como participar das atividades do Centro Acadêmico." />
-      <div className="wrap grid gap-12 py-12 md:py-16 lg:grid-cols-[1.3fr_1fr]">
+      <div className="wrap grid gap-[clamp(2rem,5vw,3rem)] py-[clamp(2rem,6vw,4rem)] lg:grid-cols-[1.3fr_1fr]">
         <section aria-labelledby="form-t" className="min-w-0">
           <h2 id="form-t" className="display text-2xl">Envie uma mensagem</h2>
 
@@ -118,7 +118,7 @@ export function Contato() {
             </div>
           )}
 
-          <form ref={formRef} noValidate onSubmit={onSubmit} className="mt-6 grid gap-5">
+          <form ref={formRef} noValidate onSubmit={onSubmit} className="mt-6 grid min-w-0 gap-5">
             <Field id="c-name" label="Nome" error={errors.name}>
               <input type="text" autoComplete="name" value={values.name} onChange={set('name')} className={input('name')} {...aria('name')} />
             </Field>

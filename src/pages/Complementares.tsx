@@ -40,14 +40,14 @@ function Cut() {
 
 function Row({ a }: { a: Complementar }) {
   return (
-    <li className="grid min-w-0 gap-x-6 gap-y-2 border-b border-line px-4 py-4 md:grid-cols-[6.5rem_minmax(0,1fr)_14rem_11rem] md:items-center md:px-5">
+    <li className="grid min-w-0 gap-x-6 gap-y-2 border-b border-line px-4 py-4 lg:grid-cols-[6.5rem_minmax(0,1fr)_14rem_11rem] lg:items-center lg:px-5">
       <p className="font-mono text-xs font-medium text-muted">{a.code}</p>
       <p className="min-w-0 text-[0.98rem] text-ink">
         {a.description}
         {a.truncated && <Cut />}
       </p>
       <p className="min-w-0 text-sm text-muted">
-        <span className="eyebrow mr-2 text-[0.6rem] md:hidden">Tipo</span>
+        <span className="eyebrow mr-2 text-[0.6rem] lg:hidden">Tipo</span>
         {typeLabel(a)}
       </p>
       <Hours ch={a.ch} />
@@ -88,7 +88,7 @@ export function Complementares() {
         title="Atividades complementares"
         lead="O que pode virar horas complementares no curso, com a carga horária de cada atividade, conforme o relatório do Colegiado emitido pela UFES."
       />
-      <div className="wrap py-12 md:py-16">
+      <div className="wrap py-[clamp(2rem,6vw,4rem)]">
         <aside className="flex flex-wrap items-start gap-x-8 gap-y-3 rounded-lg bg-night p-5 text-white on-dark" aria-label="Origem dos dados">
           <Icon name="file" size={26} className="mt-0.5 shrink-0 text-orange" />
           <div className="min-w-0 flex-1">
@@ -104,7 +104,7 @@ export function Complementares() {
 
         <section aria-labelledby="destaques-t" className="mt-10">
           <h2 id="destaques-t" className="display text-xl md:text-2xl">Atuação no CA e em empresas juniores</h2>
-          <ul className="mt-4 grid gap-4 md:grid-cols-2">
+          <ul className="mt-4 grid grid-cols-[repeat(auto-fit,minmax(min(100%,19rem),1fr))] gap-4">
             {highlights.map((a) => (
               <li key={a.code} className="min-w-0 rounded-lg border-2 border-ink bg-surface p-5">
                 <p className="font-mono text-xs text-muted">{a.code}</p>
@@ -121,7 +121,7 @@ export function Complementares() {
 
         <section aria-labelledby="lista-t" className="mt-14">
           <h2 id="lista-t" className="display text-xl md:text-2xl">Lista completa</h2>
-          <form className="mt-5 grid gap-4 md:grid-cols-[1.4fr_1fr_1fr]" role="search" aria-label="Filtrar atividades" onSubmit={(e) => e.preventDefault()}>
+          <form className="mt-5 grid grid-cols-[repeat(auto-fit,minmax(min(100%,13rem),1fr))] gap-4" role="search" aria-label="Filtrar atividades" onSubmit={(e) => e.preventDefault()}>
             <div>
               <label htmlFor="busca-atv" className="eyebrow mb-2 block text-muted">Buscar</label>
               <input id="busca-atv" type="search" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Monitoria, estágio, ATV01609…" className={control} />
@@ -150,7 +150,7 @@ export function Complementares() {
           </p>
 
           <div className="mt-3 overflow-hidden rounded-lg border border-line bg-surface">
-            <div className="eyebrow hidden grid-cols-[6.5rem_minmax(0,1fr)_14rem_11rem] gap-x-6 border-b border-line bg-surface-2 px-5 py-3 text-[0.66rem] text-muted md:grid">
+            <div className="eyebrow hidden grid-cols-[6.5rem_minmax(0,1fr)_14rem_11rem] gap-x-6 border-b border-line bg-surface-2 px-5 py-3 text-[0.66rem] text-muted lg:grid">
               <span>Código</span>
               <span>Atividade</span>
               <span>Tipo</span>

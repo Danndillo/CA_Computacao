@@ -12,7 +12,7 @@ export function Eventos() {
   return (
     <>
       <PageHeader eyebrow="Agenda" title="Eventos" lead="Palestras, semanas acadêmicas, oficinas, encontros e confraternizações organizados ou apoiados pelo Centro Acadêmico." />
-      <div className="wrap py-12 md:py-16">
+      <div className="wrap py-[clamp(2rem,6vw,4rem)]">
         {isDemo && (
           <div className="mb-8">
             <DemoNotice>Sem eventos oficiais cadastrados. Datas, horários e locais abaixo são marcadores a preencher, não uma agenda real.</DemoNotice>
@@ -29,7 +29,7 @@ export function Eventos() {
           ]}
         />
         <p className="sr-only" role="status" aria-live="polite">{shown.length} {shown.length === 1 ? 'evento' : 'eventos'}</p>
-        <div className="mt-8 grid gap-5 lg:grid-cols-2">
+        <div className="mt-8 grid grid-cols-[repeat(auto-fit,minmax(min(100%,26rem),1fr))] gap-5">
           {shown.map((e) => (
             <EventCard key={e.id} event={e} />
           ))}

@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState, type ButtonHTMLAttributes, type ReactNode } from 'react'
 import { copyText } from '../lib/clipboard'
 import { Icon } from './Icon'
-import { Tape } from './Tape'
 
 /* ---------- Botões ---------- */
 type Variant = 'primary' | 'outline' | 'outline-dark'
@@ -76,7 +75,7 @@ export function Chips<T extends string>({ label, options, value, onChange }: { l
 /* ---------- Texto provisório e avisos ---------- */
 export function Placeholder({ children }: { children: ReactNode }) {
   return (
-    <span className="inline-block rounded border border-dashed border-muted/70 bg-surface-2 px-1.5 py-px font-mono text-[0.86em] text-muted">
+    <span className="inline-block max-w-full rounded border border-dashed border-muted/70 bg-surface-2 px-1.5 py-px font-mono text-[0.86em] text-muted [overflow-wrap:anywhere]">
       {children}
     </span>
   )
@@ -86,7 +85,7 @@ export function DemoNotice({ children }: { children: ReactNode }) {
   return (
     <div role="note" className="flex items-start gap-3 rounded-md border border-dashed border-muted/70 bg-surface-2 p-4 text-sm text-fg">
       <span className="eyebrow mt-0.5 shrink-0 rounded-sm bg-night px-2 py-1 text-[0.65rem] text-white">Demonstração</span>
-      <p className="min-w-0">{children}</p>
+      <p className="min-w-0 [overflow-wrap:anywhere]">{children}</p>
     </div>
   )
 }
@@ -107,15 +106,14 @@ export function EmptyState({ title, children }: { title: string; children?: Reac
 /* ---------- Estrutura de página ---------- */
 export function PageHeader({ eyebrow, title, lead }: { eyebrow: string; title: string; lead?: ReactNode }) {
   return (
-    <div className="border-b border-line bg-sand">
-      <div className="wrap py-12 md:py-16">
+    <div className="border-b-4 border-orange bg-sand">
+      <div className="wrap py-[clamp(2rem,6vw,4rem)]">
         <p className="eyebrow text-accent-text">{eyebrow}</p>
-        <h1 id="titulo-pagina" tabIndex={-1} className="display mt-3 text-[clamp(2.1rem,6vw,4rem)] outline-none">
+        <h1 id="titulo-pagina" tabIndex={-1} className="display mt-3 text-[clamp(1.9rem,5.5vw,3.4rem)] outline-none">
           {title}
         </h1>
         {lead && <p className="mt-5 max-w-[62ch] text-lg text-fg">{lead}</p>}
       </div>
-      <Tape className="text-orange" />
     </div>
   )
 }
@@ -123,7 +121,7 @@ export function PageHeader({ eyebrow, title, lead }: { eyebrow: string; title: s
 export function Section({ title, eyebrow, action, children, tone = 'plain', id }: { title: string; eyebrow?: string; action?: ReactNode; children: ReactNode; tone?: 'plain' | 'sand' | 'dark'; id?: string }) {
   const bg = tone === 'dark' ? 'bg-night text-white on-dark' : tone === 'sand' ? 'bg-sand' : ''
   return (
-    <section id={id} aria-labelledby={`${id ?? title}-t`.replace(/\s+/g, '-')} className={`py-14 md:py-20 ${bg}`}>
+    <section id={id} aria-labelledby={`${id ?? title}-t`.replace(/\s+/g, '-')} className={`py-[clamp(2.5rem,7vw,5rem)] ${bg}`}>
       <div className="wrap">
         <div className="mb-8 flex flex-wrap items-end justify-between gap-x-6 gap-y-3">
           <div className="min-w-0">
