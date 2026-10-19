@@ -90,10 +90,6 @@ export function DemoNotice({ children }: { children: ReactNode }) {
   )
 }
 
-export function DemoTag() {
-  return <span className="eyebrow rounded-sm bg-sand px-2 py-1 text-[0.62rem] text-ink">Demonstração</span>
-}
-
 export function EmptyState({ title, children }: { title: string; children?: ReactNode }) {
   return (
     <div className="rounded-md border border-dashed border-line bg-surface p-8 text-center">

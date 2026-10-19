@@ -1,20 +1,18 @@
 import { useEffect, useRef, useState } from 'react'
 import { nav } from '../content/site'
-import type { PageName, Route } from '../lib/route'
+import type { Route } from '../lib/route'
 import { useTheme } from '../lib/useTheme'
 import { Icon } from './Icon'
 import { Monogram, Wordmark } from './Logo'
-
-const activeFor = (page: PageName): PageName => (page === 'noticia' ? 'noticias' : page)
 
 export function Header({ route }: { route: Route }) {
   const [open, setOpen] = useState(false)
   const { theme, toggle } = useTheme()
   const headerRef = useRef<HTMLElement>(null)
   const menuBtn = useRef<HTMLButtonElement>(null)
-  const current = activeFor(route.page)
+  const current = route.page
 
-  useEffect(() => setOpen(false), [route.page, route.id])
+  useEffect(() => setOpen(false), [route.page])
 
   // Com o menu aberto: Esc fecha (e devolve o foco ao botão); toque fora também fecha.
   useEffect(() => {

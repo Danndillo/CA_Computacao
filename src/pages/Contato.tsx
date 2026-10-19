@@ -189,9 +189,8 @@ export function Contato() {
           <section aria-labelledby="part-t" className="rounded-lg bg-sand p-6">
             <h2 id="part-t" className="display text-2xl">Como participar</h2>
             <ul className="mt-4 space-y-3 text-[0.98rem]">
-              <li className="flex gap-3"><Icon name="check" className="mt-1 shrink-0 text-accent-text" /> <span>Acompanhe os comunicados e a agenda de eventos.</span></li>
-              <li className="flex gap-3"><Icon name="check" className="mt-1 shrink-0 text-accent-text" /> <span>Mande sugestões e pedidos de pauta pelo formulário.</span></li>
-              <li className="flex gap-3"><Icon name="check" className="mt-1 shrink-0 text-accent-text" /> <span>Entre em um <a className="link-inline" href="#projetos">projeto ou iniciativa</a>.</span></li>
+              <li className="flex gap-3"><Icon name="check" className="mt-1 shrink-0 text-accent-text" /> <span>Mande dúvidas, sugestões e pedidos de pauta pelo formulário.</span></li>
+              <li className="flex gap-3"><Icon name="check" className="mt-1 shrink-0 text-accent-text" /> <span>Conheça quem faz parte da <a className="link-inline" href="#integrantes">gestão do Centro Acadêmico</a>.</span></li>
               <li className="flex gap-3"><Icon name="check" className="mt-1 shrink-0 text-accent-text" /> <span className="min-w-0">Veja quanto a participação pode valer em <a className="link-inline" href="#complementares">horas complementares</a>.</span></li>
             </ul>
           </section>

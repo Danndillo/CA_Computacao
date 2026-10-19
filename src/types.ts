@@ -1,39 +1,3 @@
-export type NewsCategory =
-  | 'Comunicados'
-  | 'Representação estudantil'
-  | 'Atividades acadêmicas'
-  | 'Eventos'
-  | 'Oportunidades'
-
-export interface NewsPost {
-  id: string
-  title: string
-  /** Imagem de capa opcional. Sem imagem, o site usa um padrão gráfico da categoria. */
-  cover?: { src: string; alt: string }
-  dateLabel: string
-  isoDate?: string
-  category: NewsCategory
-  summary: string
-  body: string[]
-  urgent?: boolean
-  /** Conteúdo demonstrativo. Some automaticamente quando houver publicações reais. */
-  demo?: boolean
-}
-
-export interface EventItem {
-  id: string
-  name: string
-  description: string
-  dateLabel: string
-  isoDate?: string
-  time: string
-  place: string
-  image?: { src: string; alt: string }
-  registrationUrl?: string
-  status: 'proximos' | 'anteriores'
-  demo?: boolean
-}
-
 export interface Member {
   id: string
   name: string
@@ -43,18 +7,6 @@ export interface Member {
   links?: { label: string; href: string }[]
   /** Cartão ainda não preenchido com dados oficiais. */
   placeholder?: boolean
-}
-
-export interface Project {
-  id: string
-  title: string
-  description: string
-  objective: string
-  owners: string
-  status: string
-  howToJoin: string
-  image?: { src: string; alt: string }
-  demo?: boolean
 }
 
 export type DocCategory =

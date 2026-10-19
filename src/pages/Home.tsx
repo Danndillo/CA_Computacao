@@ -1,9 +1,8 @@
-import { ArrowLink, ButtonLink, DemoNotice, Section } from '../components/ui'
-import { EventCard, NewsCard, ProjectCard } from '../components/cards'
+import { ArrowLink, ButtonLink, Section } from '../components/ui'
 import { Icon, type IconName } from '../components/Icon'
 import { complementares, complementaresSource } from '../content/complementares'
 import { docCategories } from '../content/documents'
-import { getDocuments, getEvents, getNews, getProjects } from '../services/content'
+import { getDocuments } from '../services/content'
 
 function Hero() {
   return (
@@ -19,12 +18,12 @@ function Hero() {
           Representando estudantes. <span className="text-orange">Construindo o futuro da Computação.</span>
         </h1>
         <p className="rise mt-6 max-w-[56ch] text-[clamp(1rem,2.2vw,1.2rem)] text-white/80" style={{ animationDelay: '140ms' }}>
-          Canal de comunicação entre o Centro Acadêmico e a turma: avisos, eventos, projetos, documentos e as formas de participar da vida do curso.
+          Canal de comunicação entre o Centro Acadêmico e a turma: documentos, atividades complementares e as formas de participar da vida do curso.
         </p>
         <div className="rise mt-8 flex flex-wrap gap-3" style={{ animationDelay: '210ms' }}>
           <ButtonLink href="#sobre">Conheça o Centro Acadêmico</ButtonLink>
-          <ButtonLink href="#eventos" variant="outline-dark">
-            Confira os próximos eventos
+          <ButtonLink href="#complementares" variant="outline-dark">
+            Veja as atividades complementares
           </ButtonLink>
         </div>
       </div>
@@ -33,18 +32,14 @@ function Hero() {
 }
 
 const quick: { href: string; title: string; text: string; icon: IconName }[] = [
+  { href: '#integrantes', title: 'Integrantes', text: 'Quem faz parte da gestão', icon: 'user' },
   { href: '#documentos', title: 'Documentos', text: 'Estatuto, atas, editais e relatórios', icon: 'file' },
   { href: '#complementares', title: 'Atividades complementares', text: `${complementares.length} atividades da lista da UFES`, icon: 'hours' },
-  { href: '#eventos', title: 'Eventos', text: 'Próximos encontros e os anteriores', icon: 'calendar' },
   { href: '#contato', title: 'Contato', text: 'Dúvidas, sugestões e solicitações', icon: 'mail' },
 ]
 
 export function Home() {
-  const news = getNews()
-  const events = getEvents()
-  const projects = getProjects()
   const docs = getDocuments()
-  const upcoming = events.items.filter((e) => e.status === 'proximos').slice(0, 2)
   const cA = complementares.find((a) => a.code === 'ATV01609')
 
   return (
@@ -71,41 +66,7 @@ export function Home() {
         </div>
       </section>
 
-      <Section title="Notícias recentes" eyebrow="Comunicados" action={<ArrowLink href="#noticias">Todas as notícias</ArrowLink>}>
-        {news.isDemo && (
-          <div className="mb-6">
-            <DemoNotice>Ainda não há publicações oficiais. Os cartões abaixo são modelos de layout.</DemoNotice>
-          </div>
-        )}
-        <div className="grid grid-cols-[repeat(auto-fill,minmax(min(100%,19rem),1fr))] gap-5">
-          {news.items.slice(0, 3).map((p) => (
-            <NewsCard key={p.id} post={p} />
-          ))}
-        </div>
-      </Section>
-
-      <Section title="Próximos eventos" eyebrow="Agenda" tone="sand" action={<ArrowLink href="#eventos">Ver todos os eventos</ArrowLink>}>
-        {events.isDemo && (
-          <div className="mb-6">
-            <DemoNotice>Sem eventos oficiais cadastrados. Datas, horários e locais abaixo são marcadores a preencher.</DemoNotice>
-          </div>
-        )}
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,26rem),1fr))] gap-5">
-          {upcoming.map((e) => (
-            <EventCard key={e.id} event={e} />
-          ))}
-        </div>
-      </Section>
-
-      <Section title="Projetos estudantis" eyebrow="Iniciativas" action={<ArrowLink href="#projetos">Conheça os projetos</ArrowLink>}>
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,22rem),1fr))] gap-5">
-          {projects.items.slice(0, 2).map((p) => (
-            <ProjectCard key={p.id} project={p} />
-          ))}
-        </div>
-      </Section>
-
-      <Section title="Documentos importantes" eyebrow="Transparência" tone="sand" action={<ArrowLink href="#documentos">Todos os documentos</ArrowLink>}>
+      <Section title="Documentos importantes" eyebrow="Transparência" action={<ArrowLink href="#documentos">Todos os documentos</ArrowLink>}>
         <ul className="grid grid-cols-[repeat(auto-fill,minmax(min(100%,17rem),1fr))] gap-3">
           {docCategories.map((c) => {
             const n = docs.filter((d) => d.category === c).length

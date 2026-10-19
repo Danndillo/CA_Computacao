@@ -6,18 +6,15 @@ import { usePageTitle, useRoute } from './lib/route'
 import { Complementares } from './pages/Complementares'
 import { Contato } from './pages/Contato'
 import { Documentos } from './pages/Documentos'
-import { Eventos } from './pages/Eventos'
 import { Home } from './pages/Home'
 import { Integrantes } from './pages/Integrantes'
 import { NaoEncontrada } from './pages/NaoEncontrada'
-import { Noticia, Noticias } from './pages/Noticias'
-import { Projetos } from './pages/Projetos'
 import { Sobre } from './pages/Sobre'
 
 export default function App() {
   const route = useRoute()
   const first = useRef(true)
-  const label = nav.find((n) => n.page === (route.page === 'noticia' ? 'noticias' : route.page))?.label ?? ''
+  const label = nav.find((n) => n.page === route.page)?.label ?? ''
   usePageTitle(route.page === 'inicio' ? '' : label || 'Página não encontrada')
 
   // A cada troca de página: volta ao topo e leva o foco ao título, para leitores de tela e teclado.
@@ -28,17 +25,13 @@ export default function App() {
     }
     window.scrollTo({ top: 0, behavior: 'auto' })
     document.getElementById('titulo-pagina')?.focus({ preventScroll: true })
-  }, [route.page, route.id])
+  }, [route.page])
 
   let page
   switch (route.page) {
     case 'inicio': page = <Home />; break
     case 'sobre': page = <Sobre />; break
     case 'integrantes': page = <Integrantes />; break
-    case 'noticias': page = <Noticias />; break
-    case 'noticia': page = <Noticia id={route.id ?? ''} />; break
-    case 'eventos': page = <Eventos />; break
-    case 'projetos': page = <Projetos />; break
     case 'documentos': page = <Documentos />; break
     case 'complementares': page = <Complementares />; break
     case 'contato': page = <Contato />; break
@@ -51,7 +44,7 @@ export default function App() {
         Ir para o conteúdo
       </a>
       <Header route={route} />
-      <main key={`${route.page}-${route.id ?? ''}`} id="conteudo" tabIndex={-1} className="page-in outline-none">{page}</main>
+      <main key={route.page} id="conteudo" tabIndex={-1} className="page-in outline-none">{page}</main>
       <Footer />
     </>
   )
