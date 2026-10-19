@@ -8,7 +8,7 @@ export const aboutIntro =
 export const aboutSections: { id: string; title: string; prompt: string; text: string[] | null }[] = [
   { 
     id: 'historia', title: 'Nossa história', prompt: '[Inserir a história do Centro Acadêmico]', text: [
-      'O CACC surgiu na necessidade de uma representação estudantil para o curso de Ciência da Computação. '
+      'O CACC surgiu na necessidade de uma representação estudantil para o curso de Ciência da Computação.'
     ] },
   { id: 'missao', title: 'Missão e objetivos', prompt: '[Inserir missão e objetivos]', text: [
     'O CACC existe para as questões que a coordenação não alcança e que o estudante não consegue resolver sozinho. Sua principal missão é fazer a intermediação entre os alunos e o colegiado do curso.','Na prática tem o objetivo de acompanhar a qualidade do curso, zelar pelos direitos do corpo discente e acolher a os alunos e suas demandas.'
