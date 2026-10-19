@@ -7,7 +7,7 @@ export function Footer() {
     <footer className="on-dark border-t-4 border-orange bg-night text-white">
       <div className="wrap grid gap-10 py-[clamp(2.5rem,6vw,3.5rem)] md:grid-cols-[1.3fr_1fr_1fr]">
         <div className="min-w-0">
-          <a href="#inicio" className="inline-flex items-center gap-3" aria-label="Voltar ao início">
+          <a href="#inicio" className="inline-flex min-h-[44px] items-center gap-3">
             <Monogram className="h-10 w-10 text-xl" />
             <Wordmark />
           </a>
@@ -21,10 +21,10 @@ export function Footer() {
 
         <nav aria-label="Navegação do rodapé">
           <h2 className="eyebrow !text-white/60">Páginas</h2>
-          <ul className="mt-4 grid grid-cols-2 gap-x-6 gap-y-2 text-sm">
+          <ul className="mt-4 grid grid-cols-2 gap-x-6 text-sm">
             {nav.map((item) => (
               <li key={item.page}>
-                <a href={`#${item.page}`} className="text-white/85 underline-offset-4 hover:text-orange hover:underline">
+                <a href={`#${item.page}`} className="inline-block py-3 text-white/85 underline-offset-4 transition-colors hover:text-orange hover:underline">
                   {item.label}
                 </a>
               </li>

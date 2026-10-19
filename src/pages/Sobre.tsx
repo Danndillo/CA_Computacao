@@ -8,10 +8,10 @@ export function Sobre() {
       <div className="wrap py-[clamp(2.5rem,7vw,5rem)]">
         <div className="grid gap-x-12 gap-y-10 lg:grid-cols-[14rem_1fr]">
           <nav aria-label="Nesta página" className="hidden lg:block">
-            <ul className="sticky top-24 space-y-2 border-l-2 border-line pl-4 text-sm">
+            <ul className="sticky top-24 border-l-2 border-line pl-4 text-sm">
               {aboutSections.map((s) => (
                 <li key={s.id}>
-                  <a href={`#sobre`} onClick={(e) => { e.preventDefault(); document.getElementById(s.id)?.scrollIntoView({ block: 'start' }) }} className="text-muted hover:text-ink">
+                  <a href={`#sobre`} onClick={(e) => { e.preventDefault(); document.getElementById(s.id)?.scrollIntoView({ block: 'start' }) }} className="block py-3 text-muted transition-colors hover:text-ink">
                     {s.title}
                   </a>
                 </li>

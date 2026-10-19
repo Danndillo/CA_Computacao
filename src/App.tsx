@@ -51,7 +51,7 @@ export default function App() {
         Ir para o conteúdo
       </a>
       <Header route={route} />
-      <main id="conteudo" tabIndex={-1} className="outline-none">{page}</main>
+      <main key={`${route.page}-${route.id ?? ''}`} id="conteudo" tabIndex={-1} className="page-in outline-none">{page}</main>
       <Footer />
     </>
   )

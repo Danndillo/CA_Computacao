@@ -40,7 +40,7 @@ export function CopyButton({ getText, label = 'Copiar link', doneLabel = 'Link c
     <button
       type="button"
       onClick={onClick}
-      className={`inline-flex min-h-[40px] items-center gap-2 rounded-md border border-line bg-surface px-3 text-sm font-medium text-fg transition-colors hover:border-ink ${className}`}
+      className={`inline-flex min-h-[44px] items-center gap-2 rounded-md border border-line bg-surface px-3 text-sm font-medium text-fg transition-[border-color,transform] duration-150 hover:border-ink active:scale-[0.97] ${className}`}
     >
       <Icon name={state === 'done' ? 'check' : 'copy'} size={16} />
       <span aria-live="polite">{state === 'done' ? doneLabel : state === 'fail' ? 'Não foi possível copiar' : label}</span>
@@ -61,7 +61,7 @@ export function Chips<T extends string>({ label, options, value, onChange }: { l
             aria-pressed={on}
             onClick={() => onChange(o.value)}
             style={on ? { background: 'var(--chip-on-bg)', color: 'var(--chip-on-fg)', borderColor: 'var(--chip-on-bg)' } : undefined}
-            className={`inline-flex min-h-[40px] items-center gap-1.5 rounded-full border px-4 text-sm font-semibold transition-colors ${on ? '' : 'border-line bg-surface text-fg hover:border-ink'}`}
+            className={`inline-flex min-h-[44px] items-center gap-1.5 rounded-full border px-4 text-sm font-semibold transition-[color,background-color,border-color,transform] duration-150 active:scale-[0.97] ${on ? '' : 'border-line bg-surface text-fg hover:border-ink'}`}
           >
             {on && <Icon name="check" size={15} />}
             {o.label}

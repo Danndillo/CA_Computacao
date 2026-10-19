@@ -61,7 +61,7 @@ export function Noticia({ id }: { id: string }) {
       <PageHeader eyebrow={`${post.category} · ${post.dateLabel}`} title={post.title} lead={post.summary} />
       <article className="wrap py-[clamp(2rem,6vw,4rem)]">
         <div className="mx-auto max-w-3xl">
-          {post.cover && <img src={post.cover.src} alt={post.cover.alt} className="aspect-[16/9] w-full rounded-lg object-cover" />}
+          {post.cover && <img src={post.cover.src} alt={post.cover.alt} decoding="async" className="aspect-[16/9] w-full rounded-lg object-cover" />}
           {post.demo && (
             <div className="mt-6"><DemoNotice>Publicação de modelo, sem informação oficial.</DemoNotice></div>
           )}

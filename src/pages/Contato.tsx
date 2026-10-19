@@ -135,7 +135,7 @@ export function Contato() {
               <textarea rows={6} value={values.message} onChange={set('message')} className={input('message')} {...aria('message')} />
             </Field>
             <div className="flex flex-wrap items-center gap-3">
-              <Button type="submit" disabled={status === 'sending'}>
+              <Button type="submit" disabled={status === 'sending'} aria-busy={status === 'sending'}>
                 {status === 'sending' ? 'Enviando…' : 'Enviar mensagem'}
                 <Icon name="arrow" size={18} />
               </Button>
@@ -189,10 +189,10 @@ export function Contato() {
           <section aria-labelledby="part-t" className="rounded-lg bg-sand p-6">
             <h2 id="part-t" className="display text-2xl">Como participar</h2>
             <ul className="mt-4 space-y-3 text-[0.98rem]">
-              <li className="flex gap-3"><Icon name="check" className="mt-1 shrink-0 text-accent-text" /> Acompanhe os comunicados e a agenda de eventos.</li>
-              <li className="flex gap-3"><Icon name="check" className="mt-1 shrink-0 text-accent-text" /> Mande sugestões e pedidos de pauta pelo formulário.</li>
-              <li className="flex gap-3"><Icon name="check" className="mt-1 shrink-0 text-accent-text" /> Entre em um <a className="link-arrow" href="#projetos">projeto ou iniciativa</a>.</li>
-              <li className="flex gap-3"><Icon name="check" className="mt-1 shrink-0 text-accent-text" /> Veja quanto a participação pode valer em <a className="link-arrow" href="#complementares">horas complementares</a>.</li>
+              <li className="flex gap-3"><Icon name="check" className="mt-1 shrink-0 text-accent-text" /> <span>Acompanhe os comunicados e a agenda de eventos.</span></li>
+              <li className="flex gap-3"><Icon name="check" className="mt-1 shrink-0 text-accent-text" /> <span>Mande sugestões e pedidos de pauta pelo formulário.</span></li>
+              <li className="flex gap-3"><Icon name="check" className="mt-1 shrink-0 text-accent-text" /> <span>Entre em um <a className="link-inline" href="#projetos">projeto ou iniciativa</a>.</span></li>
+              <li className="flex gap-3"><Icon name="check" className="mt-1 shrink-0 text-accent-text" /> <span className="min-w-0">Veja quanto a participação pode valer em <a className="link-inline" href="#complementares">horas complementares</a>.</span></li>
             </ul>
           </section>
         </div>

@@ -8,9 +8,9 @@ export function NewsCard({ post }: { post: NewsPost }) {
   const dark = !!post.urgent
   return (
     <article
-      className={`group relative flex min-w-0 flex-col overflow-hidden rounded-lg border ${dark ? 'on-dark border-night bg-night text-white' : 'border-line bg-surface'}`}
+      className={`group relative flex min-w-0 flex-col overflow-hidden rounded-lg border transition-[transform,border-color] duration-200 hover:border-orange motion-safe:hover:-translate-y-0.5 ${dark ? 'on-dark border-night bg-night text-white' : 'border-line bg-surface'}`}
     >
-      {post.cover && <img src={post.cover.src} alt={post.cover.alt} loading="lazy" className="aspect-[16/9] w-full object-cover" />}
+      {post.cover && <img src={post.cover.src} alt={post.cover.alt} loading="lazy" decoding="async" className="aspect-[16/9] w-full object-cover" />}
       <div className="flex flex-1 flex-col gap-3 p-5">
         <div className="flex flex-wrap items-center gap-2">
           {post.urgent && (
@@ -90,7 +90,7 @@ export function MemberCard({ member }: { member: Member }) {
   return (
     <article className="flex min-w-0 flex-col items-center rounded-lg border border-line bg-surface p-6 text-center">
       {member.photo ? (
-        <img src={member.photo.src} alt={member.photo.alt} loading="lazy" className="h-28 w-28 rounded-full object-cover" />
+        <img src={member.photo.src} alt={member.photo.alt} loading="lazy" decoding="async" className="h-28 w-28 rounded-full object-cover" />
       ) : (
         <div className="grid h-28 w-28 place-items-center rounded-full bg-sand text-muted" role="img" aria-label="Foto ainda não disponível">
           <Icon name="user" size={44} />
@@ -126,7 +126,7 @@ export function ProjectCard({ project, dark = false }: { project: Project; dark?
   return (
     <article className={`flex min-w-0 flex-col gap-4 rounded-lg border p-6 ${dark ? 'border-graphite bg-white/[0.04] text-white on-dark' : 'border-line bg-surface'}`}>
       <div className="flex flex-wrap items-center gap-2">{project.demo && (dark ? <span className="eyebrow rounded-sm bg-white px-2 py-1 text-[0.62rem] text-night">Demonstração</span> : <DemoTag />)}</div>
-      {project.image && <img src={project.image.src} alt={project.image.alt} loading="lazy" className="aspect-[16/9] w-full rounded-md object-cover" />}
+      {project.image && <img src={project.image.src} alt={project.image.alt} loading="lazy" decoding="async" className="aspect-[16/9] w-full rounded-md object-cover" />}
       <h3 className={`display text-xl ${dark ? 'text-white' : ''}`}>{project.title}</h3>
       <p className={`text-[0.95rem] ${dark ? 'text-white/80' : 'text-muted'}`}>{project.description}</p>
       <dl className="grid gap-3 text-sm">

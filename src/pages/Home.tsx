@@ -56,7 +56,7 @@ export function Home() {
           <ul className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,15rem),1fr))] gap-3">
             {quick.map((q) => (
               <li key={q.href}>
-                <a href={q.href} className="flex h-full items-start gap-4 rounded-lg border border-line bg-surface p-4 transition-colors hover:border-ink">
+                <a href={q.href} className="flex h-full items-start gap-4 rounded-lg border border-line bg-surface p-4 transition-[border-color,transform] duration-200 hover:border-ink motion-safe:hover:-translate-y-0.5">
                   <span className="grid h-10 w-10 shrink-0 place-items-center rounded-md bg-night text-orange">
                     <Icon name={q.icon} size={20} />
                   </span>
@@ -111,7 +111,7 @@ export function Home() {
             const n = docs.filter((d) => d.category === c).length
             return (
               <li key={c}>
-                <a href="#documentos" className="flex h-full items-center justify-between gap-3 rounded-lg border border-line bg-surface p-4 transition-colors hover:border-ink">
+                <a href="#documentos" className="flex h-full items-center justify-between gap-3 rounded-lg border border-line bg-surface p-4 transition-[border-color,transform] duration-200 hover:border-ink motion-safe:hover:-translate-y-0.5">
                   <span className="min-w-0 font-semibold text-ink">{c}</span>
                   <span className="eyebrow shrink-0 text-[0.62rem] text-muted">{n > 0 ? `${n} ${n === 1 ? 'arquivo' : 'arquivos'}` : 'A publicar'}</span>
                 </a>
